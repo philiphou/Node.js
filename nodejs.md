@@ -86,8 +86,21 @@
     - 包描述文件 用于表达非代码的相关信息，类似包的简历，是一个JSON格式的文件，名字叫： package.json, 位于包的根目录下，是包的重要组成部分；
     - package.json 中的字段： name， description, version, keywords 等
     - NPM (Node Package Manager) 借助NPM, Node 与第三方模块之间形成了一个很好的生态系统； NPM 帮助其完成了第三方模块的发布，安装和依赖等。 
-    - NPM 会在安装 node 时候自带一起送
-    - npm install +包名： 在当前目录安装包
-    - npm install + 包名 -g ： 表示在全局模式安装包
-    - npm search +包名： 在npm帮助下寻找包
-    - npm init : 将会创建一个 Package.json 文件，初始化一个包文件夹
+    - NPM 会在安装 node 时候自带一起送， npm 常用命令：
+            -- npm install/i +包名： 在当前目录安装包
+            -- npm install/i + 包名 -g ： 表示在全局模式安装包； 全局安装的包，一般都是一些工具，比如 express generator
+            -- npm search +包名： 在npm帮助下寻找包
+            -- npm init : 将会创建一个 Package.json 文件，初始化一个包文件夹
+            -- npm remove/r +包名： 删除一个包
+            -- npm install/i + 包名 --save : 安装包并添加到依赖中！依赖内容在package.json中。
+            -- npm install 后面不加任何东西， 那么，npm 就会自动根据package.json 里面说明的依赖dependencies去下载对应的各个依赖（包）， 做项目时候，一般不会上传 node-modules 文件夹，而是利用package.json给用户一个指引，用户下载后运行 npm install 去安装各个依赖；
+    - 所有通过npm下载的包，都会放到 node-modules 文件夹里，通过npm下载的包，可以直接通过包名引入： const math = require('math')
+    - node在使用模块名字引入模块时候，它会首先在当前目录的 node_modules文件夹中寻找是否含有该模块，如果有，则直接引入使用，如果没有， 继续上一级目录的node_modules中寻找，如果没有则继续上一级，直到找到为止，如果一直找到磁盘根目录，依然没有，则报错，类似于作用域链。
+    -Buffer(缓冲区)
+        1. 从结构上看，buffer非常像一个数组，它的元素为16进制的两位数,操作的方法和数组类似。 
+           - 数组中不能存储二进制文件，而buffer就是专门用来存储这些二进制文件,但是是以十六进制显示，。 因为服务器返回给前端的内容都是二进制文件。 
+        2. 实际上一个元素就表示内存中的一个字节
+        3. 实际上Buffer中的内存不是通过JS分配的，而是在底层通过C++申请的
+        4. 也就是我们可以直接通过Buffer来创建内存中的空间。
+        5. buffer的大小，一旦确定则不能修改，buffer 实际上是对底层内存的直接操作。const buf = Buffer.alloc(10) 就是在内存中分配10个字节连续空间给buf
+
