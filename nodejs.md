@@ -72,7 +72,7 @@
             __dirname ： 是当前文件所在的文件夹完整路径；
     - exports 和 module.exports 本质上是一个对象，通过export 只能通过 exports.变量名形式暴露， module.export 可以通过 module.exports ={} 的方式统一暴露
         
-# Package npm包
+# Package和 npm包管理器
     - CommonJS 的包规范允许我们将一组相关的模块组合到一起，形成一组完整的工具
     - CommonJS 的包规范由包结构和包描述文件两个部分组成
         1. 包结构： 用于组织包中的各种文件
@@ -83,4 +83,11 @@
         3. lib js代码
         4. doc 文档
         5. test 单元测试
-    - 
+    - 包描述文件 用于表达非代码的相关信息，类似包的简历，是一个JSON格式的文件，名字叫： package.json, 位于包的根目录下，是包的重要组成部分；
+    - package.json 中的字段： name， description, version, keywords 等
+    - NPM (Node Package Manager) 借助NPM, Node 与第三方模块之间形成了一个很好的生态系统； NPM 帮助其完成了第三方模块的发布，安装和依赖等。 
+    - NPM 会在安装 node 时候自带一起送
+    - npm install +包名： 在当前目录安装包
+    - npm install + 包名 -g ： 表示在全局模式安装包
+    - npm search +包名： 在npm帮助下寻找包
+    - npm init : 将会创建一个 Package.json 文件，初始化一个包文件夹
